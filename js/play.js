@@ -166,6 +166,10 @@ const nextGo = () => {
     activePieces = []
 
     hidePlayerCantGoMessage()
+
+    if (allFinished(playerTurn)) {
+        nextGo()
+    }
 }
 
 const playerGo = () => {
@@ -368,7 +372,7 @@ const resetPieceMove = () => {
 }
 
 const allFinished = playerId => {
-    return (document.querySelectorAll('.item-2-2.p' + playerId + ' .finished').length == 3)
+    return (document.querySelectorAll('.item-2-2.p' + playerId + ' .finished').length >= 3)
 }
 
 const displayWinner = (playerId) => {
