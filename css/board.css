@@ -1,0 +1,45 @@
+#board {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 15px auto;
+}
+
+@media screen and (max-width: 1350px) {
+    #board {
+        float: right;
+        margin: 15px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #board {
+        float: none;
+        margin: 15px auto;
+    }
+}
+
+.item {
+    height: 100px;
+}
+
+.item-2-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+    overflow: auto;
+}
+
+#board .cell {
+    border: 1px solid #ff435c;
+}
+
+#board .cell.moveTo {
+    background: rgba(255, 67, 92, 0.5);
+    cursor: pointer;
+}
+
+
+
+

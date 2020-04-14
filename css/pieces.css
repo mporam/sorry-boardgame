@@ -1,0 +1,116 @@
+.die-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 150px;
+    text-align: center;
+}
+
+#dice {
+    height: 100px;
+    border: 1px solid black;
+    background: #cccccc;
+    padding-top: 55px;
+    text-align: center;
+    font-size: 35px;
+}
+
+@media screen and (max-width: 1200px) {
+    #die-container {
+        position: static;
+        margin: 15px auto;
+    }
+}
+
+.die-container .player-turn {
+    margin-bottom: 5px;
+}
+
+.die-container .player-turn.error {
+    color: red;
+}
+
+.die-container .roll {
+    width: 100%;
+    background: #333333;
+    color: #eeeeee;
+    border: 1px solid black;
+    font-size: 20px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.die-container .roll:active {
+    font-size: 18px;
+    padding: 6px 0;
+}
+
+#details {
+    margin-top: 5px;
+}
+
+.piece {
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 4px black;
+    display: block;
+}
+
+.piece.active {
+    box-shadow: inset 0 0 0 4px yellow;
+}
+
+.piece.active:hover,
+.piece.selected {
+    box-shadow: inset 0 0 0 4px red;
+    cursor: move;
+}
+
+.piece.inactive {
+    opacity: 50%;
+}
+
+.piece.finished {
+    opacity: 50%;
+    position: relative;
+    box-shadow: inset 0 0 0 4px #dddddd;
+}
+
+.piece.finished::before {
+    content: 'F';
+    position: absolute;
+    left: 20px;
+    top: 16px;
+}
+
+.piece.hide {
+    display: none;
+}
+
+.piece.p1 {
+    background: #a4036f;
+}
+
+.piece.p2 {
+    background: #048ba8;
+}
+
+.piece.p3 {
+    background: #16db93;
+}
+
+.piece.p4 {
+    background: #f29e4c;
+}
+
+.cell .piece {
+    width: 50%;
+    height: 50%;
+    margin: 25%
+}
+
+.item-2-2.cell .piece {
+    width: 25%;
+    height: 25%;
+    margin: 12.5%;
+    float: left;
+}

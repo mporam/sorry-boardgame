@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/general.css" type="text/css">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="css/board.css" type="text/css">
+    <link rel="stylesheet" href="css/pieces.css" type="text/css">
+
+    <script src="js/dice.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/onload.js" defer></script>
+    <script src="js/play.js" defer></script>
+    <title>Board Game</title>
+</head>
+<body>
+
+<div class="modal hide" id="startScreen">
+    <header>
+        <h2>How many players?</h2>
+    </header>
+    <div class="content">
+        <label>Minimum of 2 players</label>
+        <input type="number" min="2" max="4" id="playerCount" value="4">
+        <button id="play">Start</button>
+    </div>
+</div>
+
+<div class="modal hide" id="sorry">
+    <header>
+        <div class="close">&#10060;</div>
+    </header>
+    <div class="content">
+        <h1 class="text-center">Sorry!</h1>
+    </div>
+</div>
+
+<div class="modal hide" id="winner">
+    <header>
+        <div class="close">&#10060;</div>
+    </header>
+    <div class="content text-center">
+        <h1>Player <span id="winningPlayerId"></span> wins!</h1>
+        <button id="continue">Continue playing</button>
+    </div>
+</div>
+
+
+<div class="die-container">
+    <div class="player-turn hide">Player <span id="playerNo">1</span> <span id="playerAction">turn</span></div>
+    <div id="dice"></div>
+    <button class="roll">Roll</button>
+    <div id="details"></div>
+</div>
+
+<div id="board">
+    <div class="item cell" data-cell="1"></div>
+    <div class="item cell" data-cell="2"></div>
+    <div class="item cell" data-cell="3" data-finish="1" data-player="1"></div>
+    <div class="item cell p1-start" data-cell="4"></div>
+    <div class="item cell" data-cell="5"></div>
+    <div class="item cell" data-cell="6"></div>
+    <div class="item cell" data-cell="7"></div>
+    <div class="item cell" data-cell="8"></div>
+    <div class="item cell" data-cell="9"></div>
+    <div class="item cell" data-cell="10"></div>
+    <div class="item cell" data-cell="36"></div>
+    <div class="item"></div>
+    <div class="item cell" data-player="1" data-finish="2"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="11"></div>
+    <div class="item cell" data-cell="35"></div>
+    <div class="item"></div>
+    <div class="item cell" data-player="1" data-finish="3"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item-2-2 cell p2" data-next="12" data-player="2" data-finish="4">
+        <i class="piece p2" data-player="2" data-end="11"></i>
+        <i class="piece p2" data-player="2" data-end="11"></i>
+        <i class="piece p2" data-player="2" data-end="11"></i>
+        <i class="piece p2" data-player="2" data-end="11"></i>
+    </div>
+    <div class="item cell" data-player="2" data-finish="3"></div>
+    <div class="item cell" data-player="2" data-finish="2"></div>
+    <div class="item cell" data-cell="12" data-finish="1" data-player="2"></div>
+    <div class="item cell" data-cell="34"></div>
+    <div class="item"></div>
+    <div class="item-2-2 cell p1" data-next="3" data-player="1" data-finish="4">
+        <i class="piece p1" data-player="1" data-end="2"></i>
+        <i class="piece p1" data-player="1" data-end="2"></i>
+        <i class="piece p1" data-player="1" data-end="2"></i>
+        <i class="piece p1" data-player="1" data-end="2"></i>
+    </div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell p2-start" data-cell="13"></div>
+    <div class="item cell" data-cell="33"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="14"></div>
+    <div class="item cell" data-cell="32"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item-2-2 cell p3" data-next="21" data-player="3" data-finish="4">
+        <i class="piece p3" data-player="3" data-end="20"></i>
+        <i class="piece p3" data-player="3" data-end="20"></i>
+        <i class="piece p3" data-player="3" data-end="20"></i>
+        <i class="piece p3" data-player="3" data-end="20"></i>
+    </div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="15"></div>
+    <div class="item cell p4-start" data-cell="31"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item-2-2 cell p4" data-next="30" data-player="4" data-finish="4">
+        <i class="piece p4" data-player="4" data-end="29"></i>
+        <i class="piece p4" data-player="4" data-end="29"></i>
+        <i class="piece p4" data-player="4" data-end="29"></i>
+        <i class="piece p4" data-player="4" data-end="29"></i>
+    </div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="16"></div>
+    <div class="item cell" data-cell="30" data-finish="1" data-player="4"></div>
+    <div class="item cell" data-player="4" data-finish="2"></div>
+    <div class="item cell" data-player="4" data-finish="3"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell" data-player="3" data-finish="3"></div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="17"></div>
+    <div class="item cell" data-cell="29"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item cell" data-player="3" data-finish="2"></div>
+    <div class="item"></div>
+    <div class="item cell" data-cell="18"></div>
+    <div class="item cell" data-cell="28"></div>
+    <div class="item cell" data-cell="27"></div>
+    <div class="item cell" data-cell="26"></div>
+    <div class="item cell" data-cell="25"></div>
+    <div class="item cell" data-cell="24"></div>
+    <div class="item cell" data-cell="23"></div>
+    <div class="item cell p3-start" data-cell="22"></div>
+    <div class="item cell" data-cell="21" data-finish="1" data-player="3"></div>
+    <div class="item cell" data-cell="20"></div>
+    <div class="item cell" data-cell="19"></div>
+</div>
+
+</body>
+</html>
