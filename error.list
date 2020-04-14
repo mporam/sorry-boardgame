@@ -1,5 +1,3 @@
-- player who has won still gets a roll
-
 - targetCell.querySelectorAll is not a function play.js:53:32
     - perhaps appears when piece on finish square?
     - happened with sorry roll with pieces in start
