@@ -1,0 +1,19 @@
+- player who has won still gets a roll
+
+- targetCell.querySelectorAll is not a function play.js:53:32
+    - perhaps appears when piece on finish square?
+    - happened with sorry roll with pieces in start
+    - rolling a 4 lets you out, is the if for this before the bit that breaks?
+    - also lets you move if you can get to finish
+    - cannot get new pieces out even with correct role
+
+- changing piece with a 4 roll = targetCell.classList is undefined 234:5
+    - cannot replicate
+
+
+- handle special rolls
+    - 7
+    - sorry
+    - 10
+
+- can reroll dice on valid turn
